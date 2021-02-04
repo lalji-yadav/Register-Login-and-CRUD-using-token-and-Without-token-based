@@ -5,7 +5,10 @@ import Reg from "./components/reg";
 import Table from "./components/table";
 import Update from "./components/update";
 
-import Navb from "./crud/navbar";
+import Read from "./crud/read";
+import Create from "./crud/create";
+import Uptoken from "./crud/update";
+import Navbar from "./crud/navbar";
 
 import {
   BrowserRouter as Router,
@@ -23,7 +26,10 @@ function App() {
            <Route exact path="/reg" component={Reg} />
            <Route exact path="/table" component={Table} />
 
-           <Route exact path="/navbar" component={Navb} />
+           <Route exact path="/crud" component={Read} />
+           <Route exact path="/create" component={Create} />
+           <Route exact path="/uptoken" component={Uptoken} />
+           <Route exact path="/navbar" component={Navbar} />
 
 
            <Route exact path="/user/:id" render={(props)=>(<Update {...props} />)} >

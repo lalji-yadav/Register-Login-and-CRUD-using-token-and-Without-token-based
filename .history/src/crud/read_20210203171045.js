@@ -35,7 +35,6 @@ const Read = () => {
 
     return (
         <div style={{padding:'3%'}}>
-            <h2> CRUD Operation without Token </h2>
              <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
@@ -75,7 +74,7 @@ const Read = () => {
                                     <Button style={{ fontSize: "1vw" }} 
                                       variant="contained"
                                        color="primary">
-                                         <Link to={"/navbar/update/"+ item._id}> Update </Link>
+                                         <Link to={"/user/"+ item._id}> Update </Link>
                                         </Button>
                                 </TableCell>
                             </TableRow>

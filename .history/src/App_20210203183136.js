@@ -5,6 +5,9 @@ import Reg from "./components/reg";
 import Table from "./components/table";
 import Update from "./components/update";
 
+import Read from "./crud/read";
+import Create from "./crud/create";
+import Uptoken from "./crud/update";
 import Navb from "./crud/navbar";
 
 import {

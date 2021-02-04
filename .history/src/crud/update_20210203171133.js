@@ -1,16 +1,16 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import {Form,Button} from 'react-bootstrap';
 import axios from "axios";
-import {Link} from "react-router-dom";
+//import {Link} from "react-router-dom";
   
 
-const Create = () => {
+const Update = (props) => {
 
     const [values, setValues] = useState({
         name:'',
         mobile:'',
         email:'',
-        password:''
+        // _id:null
     })
 
     const changeHandler = (event) => {
@@ -19,21 +19,38 @@ const Create = () => {
           [event.target.name]: event.target.value
         }));
       };
-    
-    const onRegister=()=> {
-       axios.post('http://localhost:3000/user',
-       {name:values.name, mobile:values.mobile, email:values.email, password:values.password})
-       .then((res)=> {
-           console.log(res)
-           alert("Register successfully")
-       }).catch((err)=> {
-           console.log(err)
-       })
-    }  
+     
+    useEffect(()=>{
+        onGet()
+        // console.warn(props) 
+        // console.warn(props.match.params.id) 
+    },[])
 
+    const onGet=()=>{
+        axios.get('http://localhost:3000/user/'+ props.match.params.id).then((res)=> {
+            console.log(res)
+            setValues(res.data)
+        }).catch((err)=> {
+            console.log(err)
+        })
+    }
+
+    const onUpdate=()=> {
+        axios.patch('http://localhost:3000/user/'+ props.match.params.id,
+        {name:values.name, mobile:values.mobile, email:values.email})
+        .then((res)=> {
+            console.log(res)
+            alert("Update successfully")
+        }).catch((err)=> {
+            console.log(err)
+        })
+     }  
+      
+    //  console.log(values._id)
+    //  console.log(props.match.params.id)
     return (
         <div style={{padding:"10%"}}>
-           <h1> Register Form without Token </h1>
+           <h1> Update Table </h1>
             <Form>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
@@ -61,25 +78,15 @@ const Create = () => {
                     onChange={changeHandler}
                      />
                 </Form.Group>
-
-                <Form.Group>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password"
-                    name="password"
-                    value={values.password}
-                    onChange={changeHandler}
-                    autoComplete="on"
-                     />
-                </Form.Group>
                
                
             </Form>
 
-            <Button type="button" className="btn btn-primary" onClick={onRegister} > 
-            Register </Button> <br /> <br />
-            <Button type="button" variant="light"> <Link to="/login"> Go to Login </Link> </Button>  
+            <Button type="button" className="btn btn-primary" onClick={onUpdate} > 
+            Update Table </Button> <br /> <br />
+           
         </div>
     );
 };
 
-export default Create;
+export default Update;

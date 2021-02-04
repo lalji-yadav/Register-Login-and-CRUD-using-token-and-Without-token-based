@@ -33,7 +33,7 @@ const Create = () => {
 
     return (
         <div style={{padding:"10%"}}>
-           <h1> Register Form without Token </h1>
+           <h1> Register Form </h1>
             <Form>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>

@@ -71,6 +71,7 @@ const Login = () => {
                     <Form.Control type="email" name="email"
                      placeholder="Enter email"
                      onChange={formik.handleChange}
+                    //  onChange={formik.changeHandler}
                      onBlur={formik.handleBlur}
                      value={formik.values.email}
                       />

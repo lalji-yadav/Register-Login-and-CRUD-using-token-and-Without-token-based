@@ -13,32 +13,28 @@ const validate = values => {
         errors.email = 'Invalid email address';
       }
   
-    if (!values.password) {
-      errors.password = 'Required';
-    } else if (values.password.length < 6) {
-      errors.password = 'Must be 20 characters or less';
-    }
+    // if (!values.lastName) {
+    //   errors.lastName = 'Required';
+    // } else if (values.lastName.length > 20) {
+    //   errors.lastName = 'Must be 20 characters or less';
+    // }
   
     return errors;
   };
 
 const Login = () => {
 
-    // const [values, setValues] = useState({
-    //     email:'',
-    //     password: ''
-    // })
+    const [values, setValues] = useState({
+        email:'',
+        password: ''
+    })
 
-    // const changeHandler = (event) => {
-    //     setValues((prevProps) => ({
-    //       ...prevProps,
-    //       [event.target.name]: event.target.value
-    //     }));
-    //   };
-
-    // const handleChange = (prop) => (event) => {
-    //     setValues({ ...values, [prop]: event.target.value });
-    //   };
+    const changeHandler = (event) => {
+        setValues((prevProps) => ({
+          ...prevProps,
+          [event.target.name]: event.target.value
+        }));
+      };
 
       const formik = useFormik({
         initialValues: {
@@ -53,7 +49,7 @@ const Login = () => {
         // console.log(values);
         // alert(`${values.email}`)
         axios.post('http://localhost:3000/user/login',
-         {email:formik.values.email, password:formik.values.password})
+         {email:values.email, password:values.password})
          .then((res)=> {
             console.log(res)
             alert("Login successfully")
@@ -66,13 +62,13 @@ const Login = () => {
         <div style={{padding:"10%"}}>
             <h1> Login Form </h1>
             <Form>
-                <Form.Group>
+                <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email"
+                     value={values.email}
                      placeholder="Enter email"
-                     onChange={formik.handleChange}
+                     onChange={changeHandler}
                      onBlur={formik.handleBlur}
-                     value={formik.values.email}
                       />
                 </Form.Group>
                 <p style={{color:"red"}}>
@@ -81,21 +77,14 @@ const Login = () => {
                  ) : null}
                 </p>
 
-                <Form.Group>
+                <Form.Group controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" name="password"
-                     value={formik.values.password}
+                    <Form.Control type="password" name="password" value={values.password}
                      placeholder="Password"
-                     onChange={formik.handleChange}
-                     onBlur={formik.handleBlur}
+                     onChange={changeHandler}
                      autoComplete="on"
                       />
                 </Form.Group>
-                <p style={{color:"red"}}>
-                {formik.touched.password && formik.errors.password ? (
-                <div>{formik.errors.password}</div>
-                 ) : null}
-                </p>
                 </Form>
 
             <Button type="button" onClick={onLogin} className="btn btn-primary">Login</Button> <br /> <br />

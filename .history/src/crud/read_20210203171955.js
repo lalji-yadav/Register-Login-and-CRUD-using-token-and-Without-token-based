@@ -75,7 +75,7 @@ const Read = () => {
                                     <Button style={{ fontSize: "1vw" }} 
                                       variant="contained"
                                        color="primary">
-                                         <Link to={"/navbar/update/"+ item._id}> Update </Link>
+                                         <Link to={"/user/"+ item._id}> Update </Link>
                                         </Button>
                                 </TableCell>
                             </TableRow>

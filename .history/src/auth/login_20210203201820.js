@@ -70,7 +70,8 @@ const Login = () => {
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email"
                      placeholder="Enter email"
-                     onChange={formik.handleChange}
+                     onChange={formik.handleChange('email')}
+                    //  onChange={formik.changeHandler}
                      onBlur={formik.handleBlur}
                      value={formik.values.email}
                       />
@@ -86,7 +87,7 @@ const Login = () => {
                     <Form.Control type="password" name="password"
                      value={formik.values.password}
                      placeholder="Password"
-                     onChange={formik.handleChange}
+                     onChange={formik.handleChange('password')}
                      onBlur={formik.handleBlur}
                      autoComplete="on"
                       />

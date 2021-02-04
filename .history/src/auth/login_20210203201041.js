@@ -15,7 +15,7 @@ const validate = values => {
   
     if (!values.password) {
       errors.password = 'Required';
-    } else if (values.password.length < 6) {
+    } else if (values.password.length > 20) {
       errors.password = 'Must be 20 characters or less';
     }
   
@@ -24,10 +24,10 @@ const validate = values => {
 
 const Login = () => {
 
-    // const [values, setValues] = useState({
-    //     email:'',
-    //     password: ''
-    // })
+    const [values, setValues] = useState({
+        email:'',
+        password: ''
+    })
 
     // const changeHandler = (event) => {
     //     setValues((prevProps) => ({
@@ -36,9 +36,9 @@ const Login = () => {
     //     }));
     //   };
 
-    // const handleChange = (prop) => (event) => {
-    //     setValues({ ...values, [prop]: event.target.value });
-    //   };
+    const handleChange = (prop) => (event) => {
+        setValues({ ...values, [prop]: event.target.value });
+      };
 
       const formik = useFormik({
         initialValues: {
@@ -53,7 +53,7 @@ const Login = () => {
         // console.log(values);
         // alert(`${values.email}`)
         axios.post('http://localhost:3000/user/login',
-         {email:formik.values.email, password:formik.values.password})
+         {email:values.email, password:values.password})
          .then((res)=> {
             console.log(res)
             alert("Login successfully")
@@ -70,7 +70,8 @@ const Login = () => {
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email"
                      placeholder="Enter email"
-                     onChange={formik.handleChange}
+                     onChange={formik.handleChange('email')}
+                    //  onChange={formik.changeHandler}
                      onBlur={formik.handleBlur}
                      value={formik.values.email}
                       />
@@ -86,7 +87,7 @@ const Login = () => {
                     <Form.Control type="password" name="password"
                      value={formik.values.password}
                      placeholder="Password"
-                     onChange={formik.handleChange}
+                     onChange={formik.changeHandler}
                      onBlur={formik.handleBlur}
                      autoComplete="on"
                       />
