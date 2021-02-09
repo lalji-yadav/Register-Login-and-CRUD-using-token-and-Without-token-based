@@ -84,7 +84,7 @@ const Register = () => {
                      />
                 </Form.Group>
                 <span style={{color:"red"}}>
-                {formik.touched.name && formik.errors.name ? <div>{formik.errors.name}</div> : null}
+                {formik.errors.name ? <div>{formik.errors.name}</div> : null}
                 </span>
 
                 <Form.Group>
@@ -97,7 +97,7 @@ const Register = () => {
                      />
                 </Form.Group>
                 <span style={{color:"red"}}>
-                {formik.touched.mobile && formik.errors.mobile ? <div>{formik.errors.mobile}</div> : null}
+                {formik.errors.mobile ? <div>{formik.errors.mobile}</div> : null}
                 </span>
 
                 <Form.Group>
@@ -110,7 +110,7 @@ const Register = () => {
                      />
                 </Form.Group>
                 <span style={{color:"red"}}>
-                {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
+                {formik.errors.email ? <div>{formik.errors.email}</div> : null}
                 </span>
 
                 <Form.Group>
@@ -124,7 +124,7 @@ const Register = () => {
                      />
                 </Form.Group>
                 <span style={{color:"red"}}>
-                {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
+                {formik.errors.password ? <div>{formik.errors.name}</div> : null}
                 </span>
                
             </Form>

@@ -26,7 +26,6 @@ function App() {
            <Route exact path="/reg" component={Reg} />
            <Route exact path="/table" component={Table} />
            <Route exact path="/tabledata" component={Tabledata} />
-           <Route exact path="/readme" component={Readme} />
 
            <Route exact path="/navbar" component={Navb} />
 

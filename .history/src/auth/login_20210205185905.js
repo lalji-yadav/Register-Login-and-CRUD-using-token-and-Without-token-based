@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Form,Button} from 'react-bootstrap';
 import axios from "axios";
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useFormik } from "formik";
 
 const validate = values => {
@@ -23,8 +23,6 @@ const validate = values => {
   };
 
 const Login = () => {
-
-  const history = useHistory()
 
     // const [values, setValues] = useState({
     //     email:'',
@@ -59,8 +57,7 @@ const Login = () => {
          .then((res)=> {
           console.log(res)
           localStorage.setItem('token', res.data.token)
-          localStorage.setItem('name', res.data.abc.name)
-          history.push('/readme')
+          localStorage.setItem('name', res.data.name)
             alert("Login successfully")
         }).catch((err)=> {
             console.log(err)

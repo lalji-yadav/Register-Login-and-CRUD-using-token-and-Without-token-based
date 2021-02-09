@@ -4,35 +4,6 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import { useFormik } from "formik";
 
-const validate = values => {
-    const errors = {};
-    if (!values.name) {
-      errors.name = 'Required';
-    } else if (values.name.length > 15) {
-      errors.name = 'Must be 15 characters or less';
-    }
-  
-    if (!values.mobile) {
-      errors.mobile = 'Required';
-    } else if (values.mobile.length > 20) {
-      errors.mobile = 'Must be 20 characters or less';
-    }
-  
-    if (!values.email) {
-      errors.email = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Invalid email address';
-    }
-
-    if (!values.password) {
-        errors.password = 'Required';
-      } else if (values.password.length > 20) {
-        errors.password = 'Must be 20 characters or less';
-      }
-  
-    return errors;
-  };
-
 const Register = () => {
 
     // const [values, setValues] = useState({
@@ -54,8 +25,7 @@ const Register = () => {
         mobile:'',
         email:'',
         password:''  
-       },
-       validate
+       }
    })
     
     const onRegister=()=> {
@@ -80,12 +50,8 @@ const Register = () => {
                     name="name"
                     value={formik.values.name}
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
                      />
                 </Form.Group>
-                <span style={{color:"red"}}>
-                {formik.touched.name && formik.errors.name ? <div>{formik.errors.name}</div> : null}
-                </span>
 
                 <Form.Group>
                     <Form.Label>Mobile</Form.Label>
@@ -93,12 +59,8 @@ const Register = () => {
                      name="mobile"
                      value={formik.values.mobile}
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
                      />
                 </Form.Group>
-                <span style={{color:"red"}}>
-                {formik.touched.mobile && formik.errors.mobile ? <div>{formik.errors.mobile}</div> : null}
-                </span>
 
                 <Form.Group>
                     <Form.Label>Email</Form.Label>
@@ -106,26 +68,19 @@ const Register = () => {
                     name="email"
                     value={formik.values.email}
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
                      />
                 </Form.Group>
-                <span style={{color:"red"}}>
-                {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
-                </span>
 
                 <Form.Group>
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password"
                     name="password"
-                    value={formik.values.password}
+                    value={formik.values.pas}
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
                     autoComplete="on"
                      />
                 </Form.Group>
-                <span style={{color:"red"}}>
-                {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
-                </span>
+               
                
             </Form>
 

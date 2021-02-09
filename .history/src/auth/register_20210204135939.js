@@ -84,7 +84,7 @@ const Register = () => {
                      />
                 </Form.Group>
                 <span style={{color:"red"}}>
-                {formik.touched.name && formik.errors.name ? <div>{formik.errors.name}</div> : null}
+                {formik.errors.name ? <div>{formik.errors.name}</div> : null}
                 </span>
 
                 <Form.Group>
@@ -97,7 +97,7 @@ const Register = () => {
                      />
                 </Form.Group>
                 <span style={{color:"red"}}>
-                {formik.touched.mobile && formik.errors.mobile ? <div>{formik.errors.mobile}</div> : null}
+                {formik.errors.mobile ? <div>{formik.errors.mobile}</div> : null}
                 </span>
 
                 <Form.Group>
@@ -110,21 +110,21 @@ const Register = () => {
                      />
                 </Form.Group>
                 <span style={{color:"red"}}>
-                {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
+                {formik.errors.email ? <div>{formik.errors.email}</div> : null}
                 </span>
 
                 <Form.Group>
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password"
                     name="password"
-                    value={formik.values.password}
+                    value={formik.values.pas}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     autoComplete="on"
                      />
                 </Form.Group>
                 <span style={{color:"red"}}>
-                {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
+                {formik.errors.password ? <div>{formik.errors.name}</div> : null}
                 </span>
                
             </Form>

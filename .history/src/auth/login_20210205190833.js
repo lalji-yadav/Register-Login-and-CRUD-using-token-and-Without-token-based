@@ -60,7 +60,7 @@ const Login = () => {
           console.log(res)
           localStorage.setItem('token', res.data.token)
           localStorage.setItem('name', res.data.abc.name)
-          history.push('/readme')
+          history.pushState('/table')
             alert("Login successfully")
         }).catch((err)=> {
             console.log(err)

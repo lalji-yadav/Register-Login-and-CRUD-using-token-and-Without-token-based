@@ -6,8 +6,6 @@ import Table from "./components/table";
 import Update from "./components/update";
 import Tabledata from "./crud/tabledata";
 
-import Readme from "./auth/readme";
-
 import Navb from "./crud/navbar";
 
 import {
@@ -26,7 +24,6 @@ function App() {
            <Route exact path="/reg" component={Reg} />
            <Route exact path="/table" component={Table} />
            <Route exact path="/tabledata" component={Tabledata} />
-           <Route exact path="/readme" component={Readme} />
 
            <Route exact path="/navbar" component={Navb} />
 
